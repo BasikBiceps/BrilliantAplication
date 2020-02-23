@@ -18,40 +18,38 @@ namespace BrilliantApplication
     {
         private BarrelControlSystem m_controlSystem;
         private const double m_k_dt = 1;
-        private double m_valveStep = 0.1;
-        private double m_preasureStep = 1;
+        //private double m_valveStep = 0.1;
+        private double m_inputStreamStep = 0.001;
         private int m_roundCof = 5;
-        private int m_startPictureLocation;
-
+            
         public MainForm()
         {
             InitializeComponent();
-            m_startPictureLocation = waterPictureBox.Location.Y;
 
-            m_controlSystem = new BarrelControlSystem(100, m_k_dt, 2);
+            m_controlSystem = new BarrelControlSystem(m_k_dt);
         }
 
         private void reduceValveButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.Valve -= m_valveStep;
-            valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
+           // m_controlSystem.Valve -= m_valveStep;
+           // valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
         }
 
         private void increaseValveButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.Valve += m_valveStep;
-            valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
+           // m_controlSystem.Valve += m_valveStep;
+           // valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
         }
 
         private void reducePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream -= m_preasureStep;
+            m_controlSystem.InputStream -= m_inputStreamStep;
             preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
         }
 
         private void increasePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream += m_preasureStep;
+            m_controlSystem.InputStream += m_inputStreamStep;
             preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
         }
 
@@ -60,14 +58,8 @@ namespace BrilliantApplication
             m_controlSystem.CalculateWaterLevel();
 
             waterLevelLabel.Text = Math.Round(m_controlSystem.WaterLevel, m_roundCof).ToString();
-            outputStreamLabel.Text = Math.Round(m_controlSystem.OutputStream, m_roundCof).ToString();
-
             waterLimitStateChart.Series[0].Points.AddXY(m_controlSystem.Time, m_controlSystem.WaterLevel);
-            outputStreamStateChart.Series[0].Points.AddXY(m_controlSystem.Time, m_controlSystem.OutputStream);
 
-            var waterPictureBoxLocation = waterPictureBox.Location;
-            waterPictureBoxLocation.Y = m_startPictureLocation - Convert.ToInt32(Math.Round(m_controlSystem.WaterLevel, m_roundCof)*1.4);
-            waterPictureBox.Location = waterPictureBoxLocation;
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -83,14 +75,9 @@ namespace BrilliantApplication
         private void refreshButton_Click(object sender, EventArgs e)
         {
             m_controlSystem.RefreshSystem();
-            outputStreamLabel.Text = "0";
             waterLevelLabel.Text = "0";
 
             foreach (var series in waterLimitStateChart.Series)
-            {
-                series.Points.Clear();
-            }
-            foreach (var series in outputStreamStateChart.Series)
             {
                 series.Points.Clear();
             }
@@ -98,7 +85,7 @@ namespace BrilliantApplication
 
         private void x10Button_Click(object sender, EventArgs e)
         {
-            timer1.Interval /= 10;
+            timer1.Interval = 100;
         }
 
         private void x1Button_Click(object sender, EventArgs e)

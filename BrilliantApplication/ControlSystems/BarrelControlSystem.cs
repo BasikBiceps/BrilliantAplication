@@ -14,44 +14,26 @@ namespace BrilliantApplication.ControlSystems
         private double m_inputStream = 0;
         private double m_valve = 0;
         public double InputStream { get { return m_inputStream; } set { if (value < 0) m_inputStream = 0; else m_inputStream = value; } }
-        public double Valve { get { return m_valve; } set { if (value > 1) m_valve = 1; else if (value < 0) m_valve = 0; else m_valve = value; } }
+        //public double Valve { get { return m_valve; } set { if (value > 1) m_valve = 1; else if (value < 0) m_valve = 0; else m_valve = value; } }
         public double WaterLevel { get; set; }
         public double WaterLevelLimit { get; set; }
-        public double OutputStreamLimit { get; set; }
-        public double OutputStream { get; set; }
 
-        public BarrelControlSystem(double waterLevelLimit, double dt, double outputStreamLimit) : base() 
+        public BarrelControlSystem(double dt) : base() 
         {
             DT = dt;
-            WaterLevelLimit = waterLevelLimit;
-            OutputStreamLimit = outputStreamLimit;
+            WaterLevelLimit = SystemSettings.WaterLevelLimit;
             InputStream = 0;
-            Valve = 0;
+            //Valve = 0;
 
             var blocks = new Queue<IBlock>();
-            blocks.Enqueue(new AperiodicBlock(dt, 10));
+            blocks.Enqueue(new AperiodicBlock(dt, SystemSettings.T));
+            blocks.Enqueue(new GainBlock(SystemSettings.Gain));
             Object = new ComplexBlock(blocks);
-        }
-
-        public double GetInputStream()
-        {
-            return InputStream * Valve;
         }
 
         public double CalculateWaterLevel()
         {
-            var result = Object.Calculate(GetInputStream());
-
-            if (result > OutputStreamLimit)
-            {
-                OutputStream = OutputStreamLimit;
-                WaterLevel = result - OutputStreamLimit;
-            }
-            else
-            {
-                WaterLevel = 0;
-                OutputStream = result;
-            }
+            WaterLevel = Object.Calculate(InputStream);
 
             if (WaterLevel > WaterLevelLimit)
             {
@@ -59,14 +41,13 @@ namespace BrilliantApplication.ControlSystems
             }
             Time += DT;
 
-            return result;
+            return WaterLevel;
         }
 
         public void RefreshSystem()
         {
             WaterLevel = 0;
             Time = 0;
-            OutputStream = 0;
 
             foreach(var block in Object.Blocks)
             {

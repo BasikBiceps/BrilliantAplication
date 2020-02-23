@@ -29,18 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.waterLimitStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.reduceValveButton = new System.Windows.Forms.Button();
             this.increaseValveButton = new System.Windows.Forms.Button();
             this.valveCoefficientLabel = new System.Windows.Forms.Label();
-            this.outputStreamLabel = new System.Windows.Forms.Label();
             this.waterLevelLabel = new System.Windows.Forms.Label();
             this.helpValveLabel = new System.Windows.Forms.Label();
             this.reduceInputStreamButton = new System.Windows.Forms.Button();
@@ -48,19 +44,14 @@
             this.preasureLabel = new System.Windows.Forms.Label();
             this.helpInputStreamLabel = new System.Windows.Forms.Label();
             this.helpWaterLavelLabel = new System.Windows.Forms.Label();
-            this.helpOutputStreamLabel = new System.Windows.Forms.Label();
-            this.waterPictureBox = new System.Windows.Forms.PictureBox();
-            this.objectPictureBox = new System.Windows.Forms.PictureBox();
-            this.outputStreamStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.x10Button = new System.Windows.Forms.Button();
             this.x1Button = new System.Windows.Forms.Button();
+            this.objectPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.waterLimitStateChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waterPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputStreamStateChart)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -70,17 +61,17 @@
             // 
             // waterLimitStateChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.waterLimitStateChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.waterLimitStateChart.Legends.Add(legend3);
-            this.waterLimitStateChart.Location = new System.Drawing.Point(511, 1);
+            chartArea1.Name = "ChartArea1";
+            this.waterLimitStateChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.waterLimitStateChart.Legends.Add(legend1);
+            this.waterLimitStateChart.Location = new System.Drawing.Point(508, 115);
             this.waterLimitStateChart.Name = "waterLimitStateChart";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Water level";
-            this.waterLimitStateChart.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Water level";
+            this.waterLimitStateChart.Series.Add(series1);
             this.waterLimitStateChart.Size = new System.Drawing.Size(475, 268);
             this.waterLimitStateChart.TabIndex = 1;
             this.waterLimitStateChart.Text = "chart1";
@@ -113,15 +104,6 @@
             this.valveCoefficientLabel.Size = new System.Drawing.Size(13, 13);
             this.valveCoefficientLabel.TabIndex = 4;
             this.valveCoefficientLabel.Text = "0";
-            // 
-            // outputStreamLabel
-            // 
-            this.outputStreamLabel.AutoSize = true;
-            this.outputStreamLabel.Location = new System.Drawing.Point(413, 361);
-            this.outputStreamLabel.Name = "outputStreamLabel";
-            this.outputStreamLabel.Size = new System.Drawing.Size(13, 13);
-            this.outputStreamLabel.TabIndex = 5;
-            this.outputStreamLabel.Text = "0";
             // 
             // waterLevelLabel
             // 
@@ -188,50 +170,6 @@
             this.helpWaterLavelLabel.TabIndex = 12;
             this.helpWaterLavelLabel.Text = "Water level:";
             // 
-            // helpOutputStreamLabel
-            // 
-            this.helpOutputStreamLabel.AutoSize = true;
-            this.helpOutputStreamLabel.Location = new System.Drawing.Point(384, 335);
-            this.helpOutputStreamLabel.Name = "helpOutputStreamLabel";
-            this.helpOutputStreamLabel.Size = new System.Drawing.Size(76, 13);
-            this.helpOutputStreamLabel.TabIndex = 13;
-            this.helpOutputStreamLabel.Text = "Output stream:";
-            // 
-            // waterPictureBox
-            // 
-            this.waterPictureBox.Image = global::BrilliantApplication.Properties.Resources.Water;
-            this.waterPictureBox.Location = new System.Drawing.Point(113, 352);
-            this.waterPictureBox.Name = "waterPictureBox";
-            this.waterPictureBox.Size = new System.Drawing.Size(142, 10);
-            this.waterPictureBox.TabIndex = 14;
-            this.waterPictureBox.TabStop = false;
-            // 
-            // objectPictureBox
-            // 
-            this.objectPictureBox.Image = global::BrilliantApplication.Properties.Resources.Boiler;
-            this.objectPictureBox.Location = new System.Drawing.Point(25, 115);
-            this.objectPictureBox.Name = "objectPictureBox";
-            this.objectPictureBox.Size = new System.Drawing.Size(352, 268);
-            this.objectPictureBox.TabIndex = 0;
-            this.objectPictureBox.TabStop = false;
-            // 
-            // outputStreamStateChart
-            // 
-            chartArea4.Name = "ChartArea1";
-            this.outputStreamStateChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.outputStreamStateChart.Legends.Add(legend4);
-            this.outputStreamStateChart.Location = new System.Drawing.Point(511, 275);
-            this.outputStreamStateChart.Name = "outputStreamStateChart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Output stream";
-            this.outputStreamStateChart.Series.Add(series4);
-            this.outputStreamStateChart.Size = new System.Drawing.Size(475, 268);
-            this.outputStreamStateChart.TabIndex = 15;
-            this.outputStreamStateChart.Text = "chart1";
-            // 
             // startButton
             // 
             this.startButton.Location = new System.Drawing.Point(37, 409);
@@ -282,6 +220,15 @@
             this.x1Button.UseVisualStyleBackColor = true;
             this.x1Button.Click += new System.EventHandler(this.x1Button_Click);
             // 
+            // objectPictureBox
+            // 
+            this.objectPictureBox.Image = global::BrilliantApplication.Properties.Resources.Boiler;
+            this.objectPictureBox.Location = new System.Drawing.Point(25, 115);
+            this.objectPictureBox.Name = "objectPictureBox";
+            this.objectPictureBox.Size = new System.Drawing.Size(352, 268);
+            this.objectPictureBox.TabIndex = 0;
+            this.objectPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,9 +239,6 @@
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.outputStreamStateChart);
-            this.Controls.Add(this.waterPictureBox);
-            this.Controls.Add(this.helpOutputStreamLabel);
             this.Controls.Add(this.helpWaterLavelLabel);
             this.Controls.Add(this.helpInputStreamLabel);
             this.Controls.Add(this.preasureLabel);
@@ -302,7 +246,6 @@
             this.Controls.Add(this.reduceInputStreamButton);
             this.Controls.Add(this.helpValveLabel);
             this.Controls.Add(this.waterLevelLabel);
-            this.Controls.Add(this.outputStreamLabel);
             this.Controls.Add(this.valveCoefficientLabel);
             this.Controls.Add(this.increaseValveButton);
             this.Controls.Add(this.reduceValveButton);
@@ -311,9 +254,7 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.waterLimitStateChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waterPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputStreamStateChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,7 +268,6 @@
         private System.Windows.Forms.Button reduceValveButton;
         private System.Windows.Forms.Button increaseValveButton;
         private System.Windows.Forms.Label valveCoefficientLabel;
-        private System.Windows.Forms.Label outputStreamLabel;
         private System.Windows.Forms.Label waterLevelLabel;
         private System.Windows.Forms.Label helpValveLabel;
         private System.Windows.Forms.Button reduceInputStreamButton;
@@ -335,9 +275,6 @@
         private System.Windows.Forms.Label preasureLabel;
         private System.Windows.Forms.Label helpInputStreamLabel;
         private System.Windows.Forms.Label helpWaterLavelLabel;
-        private System.Windows.Forms.Label helpOutputStreamLabel;
-        private System.Windows.Forms.PictureBox waterPictureBox;
-        private System.Windows.Forms.DataVisualization.Charting.Chart outputStreamStateChart;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button refreshButton;
