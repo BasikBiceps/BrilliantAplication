@@ -12,8 +12,11 @@ namespace BrilliantApplication.ControlSystems
     public class BarrelControlSystem : ObjectControlSystem
     {
         private double m_inputStream = 0;
-        private double m_valve = 0;
-        public double InputStream { get { return m_inputStream; } set { if (value < 0) m_inputStream = 0; else m_inputStream = value; } }
+        //private double m_valve = 0;
+        public double InputStream { get { return m_inputStream; } 
+            set { if (value < 0) m_inputStream = 0;
+                else if (value > SystemSettings.MaxInputStream) m_inputStream = SystemSettings.MaxInputStream;
+                else m_inputStream = value; } }
         //public double Valve { get { return m_valve; } set { if (value > 1) m_valve = 1; else if (value < 0) m_valve = 0; else m_valve = value; } }
         public double WaterLevel { get; set; }
         public double WaterLevelLimit { get; set; }
@@ -26,6 +29,7 @@ namespace BrilliantApplication.ControlSystems
             //Valve = 0;
 
             var blocks = new Queue<IBlock>();
+            //TODO add Delay and Interference blocks!!! 
             blocks.Enqueue(new AperiodicBlock(dt, SystemSettings.T));
             blocks.Enqueue(new GainBlock(SystemSettings.Gain));
             Object = new ComplexBlock(blocks);
