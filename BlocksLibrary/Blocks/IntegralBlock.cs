@@ -8,9 +8,12 @@ namespace BlocksLibrary.Blocks
 {
     public class IntegralBlock : IBlock, IRefreshable
     {
-        private double m_prev = 0;
         private double m_dt;
-        private double m_sum = 0;
+        private double m_prevOfPrev = 0;
+        private double m_prevSum = 0;
+
+        public double Prev { get; set; } = 0;
+        public double Sum { get; set; } = 0;
 
         public IntegralBlock(double dt)
         {
@@ -19,16 +22,24 @@ namespace BlocksLibrary.Blocks
 
         public virtual double Calculate(double input)
         {
-            m_sum += (input + m_prev) * m_dt / 2;
-            m_prev = input;
+            m_prevSum = Sum;
+            m_prevOfPrev = Prev;
+            Sum += (input + Prev) * m_dt / 2;
+            Prev = input;
 
-            return m_sum;
+            return Sum;
         }
 
         public void Refresh()
         {
-            m_sum = 0;
-            m_prev = 0;
+            Sum = 0;
+            Prev = 0;
+        }
+
+        public void StepBackAtLimitValue()
+        {
+            Sum = m_prevSum;
+            Prev = m_prevOfPrev;
         }
     }
 }

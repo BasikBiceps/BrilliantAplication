@@ -18,10 +18,10 @@ namespace BrilliantApplication
     {
         private BarrelControlSystem m_controlSystem;
         private const double m_k_dt = 1;
-        //private double m_valveStep = 0.1;
         private double m_inputStreamStep = 0.01;
         private int m_roundCof = 5;
-            
+        //private double m_valveStep = 0.1;
+        
         public MainForm()
         {
             InitializeComponent();

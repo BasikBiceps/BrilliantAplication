@@ -13,36 +13,80 @@ namespace BrilliantApplication.ControlSystems
     {
         private double m_inputStream = 0;
         //private double m_valve = 0;
-        public double InputStream { get { return m_inputStream; } 
-            set { if (value < 0) m_inputStream = 0;
-                else if (value > SystemSettings.MaxInputStream) m_inputStream = SystemSettings.MaxInputStream;
-                else m_inputStream = value; } }
+        public double InputStream
+        {
+            get { return m_inputStream; }
+            set
+            {
+                if (value < 0)
+                {
+                    m_inputStream = 0;
+                }
+                else if (value > SystemSettings.MaxInputStream)
+                {
+                    m_inputStream = SystemSettings.MaxInputStream;
+                }
+                else
+                {
+                    m_inputStream = value;
+                }
+            }
+        }
         //public double Valve { get { return m_valve; } set { if (value > 1) m_valve = 1; else if (value < 0) m_valve = 0; else m_valve = value; } }
         public double WaterLevel { get; set; }
-        public double WaterLevelLimit { get; set; }
 
         public BarrelControlSystem(double dt) : base() 
         {
             DT = dt;
-            WaterLevelLimit = SystemSettings.WaterLevelLimit;
             InputStream = 0;
             //Valve = 0;
 
             var blocks = new Queue<IBlock>();
             //TODO add Delay and Interference blocks!!! 
-            blocks.Enqueue(new AperiodicBlock(dt, SystemSettings.T));
+            blocks.Enqueue(new DelayBlock(dt, SystemSettings.Delay));
             blocks.Enqueue(new GainBlock(SystemSettings.Gain));
+            blocks.Enqueue(new IntegralBlock(dt));
+            blocks.Enqueue(new InterferenceBlock(SystemSettings.Interference));
             Object = new ComplexBlock(blocks);
         }
 
         public double CalculateWaterLevel()
         {
-            WaterLevel = Object.Calculate(InputStream);
+            var inputValue = InputStream - SystemSettings.OutputStream;
+            var result = Object.Calculate(inputValue);
 
-            if (WaterLevel > WaterLevelLimit)
+            WaterLevel = result;
+
+            if (WaterLevel <= 0 && inputValue < 0)
             {
-                WaterLevel = WaterLevelLimit;
+                WaterLevel = 0;
+
+                foreach (var block in Object.Blocks)
+                {
+                    var integralBlock = block as IntegralBlock;
+
+                    if (integralBlock != null)
+                    {
+                        integralBlock.StepBackAtLimitValue();
+                    }
+                }
             }
+
+            if (WaterLevel >= SystemSettings.WaterLevelLimit && inputValue > 0)
+            {
+                WaterLevel = SystemSettings.WaterLevelLimit;
+
+                foreach (var block in Object.Blocks)
+                {
+                    var integralBlock = block as IntegralBlock;
+
+                    if (integralBlock != null)
+                    {
+                        integralBlock.StepBackAtLimitValue();
+                    }
+                }
+            }
+
             Time += DT;
 
             return WaterLevel;
