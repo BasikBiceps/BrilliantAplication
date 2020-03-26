@@ -19,25 +19,12 @@ namespace BrilliantApplication
         private BarrelControlSystem m_controlSystem;
         private const double m_k_dt = 1;
         private int m_roundCof = 5;
-        //private double m_valveStep = 0.1;
         
         public MainForm()
         {
             InitializeComponent();
 
             m_controlSystem = new BarrelControlSystem(m_k_dt);
-        }
-
-        private void reduceValveButton_Click(object sender, EventArgs e)
-        {
-           // m_controlSystem.Valve -= m_valveStep;
-           // valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
-        }
-
-        private void increaseValveButton_Click(object sender, EventArgs e)
-        {
-           // m_controlSystem.Valve += m_valveStep;
-           // valveCoefficientLabel.Text = Math.Round(m_controlSystem.Valve, m_roundCof).ToString();
         }
 
         private void reducePreasureButton_Click(object sender, EventArgs e)

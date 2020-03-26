@@ -34,11 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.waterLimitStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.reduceValveButton = new System.Windows.Forms.Button();
-            this.increaseValveButton = new System.Windows.Forms.Button();
-            this.valveCoefficientLabel = new System.Windows.Forms.Label();
             this.waterLevelLabel = new System.Windows.Forms.Label();
-            this.helpValveLabel = new System.Windows.Forms.Label();
             this.reduceInputStreamButton = new System.Windows.Forms.Button();
             this.increaseInputStreamButton = new System.Windows.Forms.Button();
             this.preasureLabel = new System.Windows.Forms.Label();
@@ -83,35 +79,6 @@
             this.waterLimitStateChart.TabIndex = 1;
             this.waterLimitStateChart.Text = "chart1";
             // 
-            // reduceValveButton
-            // 
-            this.reduceValveButton.Location = new System.Drawing.Point(37, 86);
-            this.reduceValveButton.Name = "reduceValveButton";
-            this.reduceValveButton.Size = new System.Drawing.Size(31, 23);
-            this.reduceValveButton.TabIndex = 2;
-            this.reduceValveButton.Text = "<";
-            this.reduceValveButton.UseVisualStyleBackColor = true;
-            this.reduceValveButton.Click += new System.EventHandler(this.reduceValveButton_Click);
-            // 
-            // increaseValveButton
-            // 
-            this.increaseValveButton.Location = new System.Drawing.Point(122, 86);
-            this.increaseValveButton.Name = "increaseValveButton";
-            this.increaseValveButton.Size = new System.Drawing.Size(31, 23);
-            this.increaseValveButton.TabIndex = 3;
-            this.increaseValveButton.Text = ">";
-            this.increaseValveButton.UseVisualStyleBackColor = true;
-            this.increaseValveButton.Click += new System.EventHandler(this.increaseValveButton_Click);
-            // 
-            // valveCoefficientLabel
-            // 
-            this.valveCoefficientLabel.AutoSize = true;
-            this.valveCoefficientLabel.Location = new System.Drawing.Point(88, 91);
-            this.valveCoefficientLabel.Name = "valveCoefficientLabel";
-            this.valveCoefficientLabel.Size = new System.Drawing.Size(13, 13);
-            this.valveCoefficientLabel.TabIndex = 4;
-            this.valveCoefficientLabel.Text = "0";
-            // 
             // waterLevelLabel
             // 
             this.waterLevelLabel.AutoSize = true;
@@ -120,15 +87,6 @@
             this.waterLevelLabel.Size = new System.Drawing.Size(13, 13);
             this.waterLevelLabel.TabIndex = 6;
             this.waterLevelLabel.Text = "0";
-            // 
-            // helpValveLabel
-            // 
-            this.helpValveLabel.AutoSize = true;
-            this.helpValveLabel.Location = new System.Drawing.Point(34, 70);
-            this.helpValveLabel.Name = "helpValveLabel";
-            this.helpValveLabel.Size = new System.Drawing.Size(89, 13);
-            this.helpValveLabel.TabIndex = 7;
-            this.helpValveLabel.Text = "Valve coefficient:";
             // 
             // reduceInputStreamButton
             // 
@@ -321,11 +279,7 @@
             this.Controls.Add(this.preasureLabel);
             this.Controls.Add(this.increaseInputStreamButton);
             this.Controls.Add(this.reduceInputStreamButton);
-            this.Controls.Add(this.helpValveLabel);
             this.Controls.Add(this.waterLevelLabel);
-            this.Controls.Add(this.valveCoefficientLabel);
-            this.Controls.Add(this.increaseValveButton);
-            this.Controls.Add(this.reduceValveButton);
             this.Controls.Add(this.waterLimitStateChart);
             this.Controls.Add(this.objectPictureBox);
             this.Name = "MainForm";
@@ -342,11 +296,7 @@
         private System.Windows.Forms.PictureBox objectPictureBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataVisualization.Charting.Chart waterLimitStateChart;
-        private System.Windows.Forms.Button reduceValveButton;
-        private System.Windows.Forms.Button increaseValveButton;
-        private System.Windows.Forms.Label valveCoefficientLabel;
         private System.Windows.Forms.Label waterLevelLabel;
-        private System.Windows.Forms.Label helpValveLabel;
         private System.Windows.Forms.Button reduceInputStreamButton;
         private System.Windows.Forms.Button increaseInputStreamButton;
         private System.Windows.Forms.Label preasureLabel;
