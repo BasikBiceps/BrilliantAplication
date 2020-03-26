@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 using BlocksLibrary.Blocks;
 using BlocksLibrary.Interfaces;
+using BrilliantApplication.Regulators;
 
 namespace BrilliantApplication.ControlSystems
 {
+    public enum WorkMode
+    { 
+        Manual,
+        Automatic
+    }
+
     public class BarrelControlSystem : ObjectControlSystem
     {
         private double m_inputStream = 0;
+        public double m_regulatorTask = 0;
         public double InputStream
         {
             get { return m_inputStream; }
@@ -33,6 +41,8 @@ namespace BrilliantApplication.ControlSystems
         }
         public double WaterLevel { get; set; }
         public GainBlock InputStreamBlock { get; set; }
+        public WorkMode WorkMode { get; set; } = WorkMode.Manual;
+        public Regulator Regulator { get; set; }
 
         public BarrelControlSystem(double dt) : base() 
         {
@@ -46,10 +56,17 @@ namespace BrilliantApplication.ControlSystems
             blocks.Enqueue(new IntegralBlock(dt));
             blocks.Enqueue(new InterferenceBlock(SystemSettings.Interference));
             Object = new ComplexBlock(blocks);
+
+            Regulator = new Regulator();
         }
 
         public double CalculateWaterLevel()
         {
+            if (WorkMode == WorkMode.Automatic)
+            {
+                InputStream = Regulator.Regulate(WaterLevel);
+            }
+
             var inputValue = InputStreamBlock.Calculate(InputStream) - SystemSettings.OutputStream;
             var result = Object.Calculate(inputValue);
 

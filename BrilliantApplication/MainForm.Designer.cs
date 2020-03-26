@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.waterLimitStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.waterLevelLabel = new System.Windows.Forms.Label();
@@ -64,17 +64,17 @@
             // 
             // waterLimitStateChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.waterLimitStateChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.waterLimitStateChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.waterLimitStateChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.waterLimitStateChart.Legends.Add(legend2);
             this.waterLimitStateChart.Location = new System.Drawing.Point(508, 115);
             this.waterLimitStateChart.Name = "waterLimitStateChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Water level";
-            this.waterLimitStateChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Water level";
+            this.waterLimitStateChart.Series.Add(series2);
             this.waterLimitStateChart.Size = new System.Drawing.Size(475, 268);
             this.waterLimitStateChart.TabIndex = 1;
             this.waterLimitStateChart.Text = "chart1";
@@ -220,6 +220,7 @@
             this.regulatorTaskTextBox.Name = "regulatorTaskTextBox";
             this.regulatorTaskTextBox.Size = new System.Drawing.Size(100, 20);
             this.regulatorTaskTextBox.TabIndex = 24;
+            this.regulatorTaskTextBox.Text = "0";
             // 
             // regulatorTaskHelpLabel
             // 
@@ -256,6 +257,7 @@
             this.sendRegulatorTaskButton.TabIndex = 28;
             this.sendRegulatorTaskButton.Text = "Send task";
             this.sendRegulatorTaskButton.UseVisualStyleBackColor = true;
+            this.sendRegulatorTaskButton.Click += new System.EventHandler(this.sendRegulatorTaskButton_Click);
             // 
             // MainForm
             // 

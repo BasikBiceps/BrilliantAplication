@@ -29,14 +29,20 @@ namespace BrilliantApplication
 
         private void reducePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream -= SystemSettings.RecommendedStep;
-            preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
+            if (m_controlSystem.WorkMode == WorkMode.Manual)
+            {
+                m_controlSystem.InputStream -= SystemSettings.RecommendedStep;
+                preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
+            }
         }
 
         private void increasePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream += SystemSettings.RecommendedStep;
-            preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
+            if (m_controlSystem.WorkMode == WorkMode.Manual)
+            {
+                m_controlSystem.InputStream += SystemSettings.RecommendedStep;
+                preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -45,7 +51,7 @@ namespace BrilliantApplication
 
             waterLevelLabel.Text = Math.Round(m_controlSystem.WaterLevel, m_roundCof).ToString();
             waterLimitStateChart.Series[0].Points.AddXY(m_controlSystem.Time, m_controlSystem.WaterLevel);
-
+            preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -81,12 +87,18 @@ namespace BrilliantApplication
 
         private void manualControlButton_Click(object sender, EventArgs e)
         {
-
+            m_controlSystem.WorkMode = WorkMode.Manual;
         }
 
         private void automaticControlButton_Click(object sender, EventArgs e)
         {
+            m_controlSystem.WorkMode = WorkMode.Automatic;
+        }
 
+        private void sendRegulatorTaskButton_Click(object sender, EventArgs e)
+        {
+            m_controlSystem.Regulator.RegulatorTask = Convert.ToDouble(regulatorTaskTextBox.Text);
+            currentRegulatorTaskLabel.Text = m_controlSystem.Regulator.RegulatorTask.ToString();
         }
     }
 }
