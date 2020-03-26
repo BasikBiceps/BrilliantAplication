@@ -34,6 +34,7 @@ namespace BrilliantApplication.ControlSystems
         }
         //public double Valve { get { return m_valve; } set { if (value > 1) m_valve = 1; else if (value < 0) m_valve = 0; else m_valve = value; } }
         public double WaterLevel { get; set; }
+        public GainBlock InputStreamBlock { get; set; }
 
         public BarrelControlSystem(double dt) : base() 
         {
@@ -41,10 +42,11 @@ namespace BrilliantApplication.ControlSystems
             InputStream = 0;
             //Valve = 0;
 
+            InputStreamBlock = new GainBlock(SystemSettings.Gain);
+
             var blocks = new Queue<IBlock>();
             //TODO add Delay and Interference blocks!!! 
             blocks.Enqueue(new DelayBlock(dt, SystemSettings.Delay));
-            blocks.Enqueue(new GainBlock(SystemSettings.Gain));
             blocks.Enqueue(new IntegralBlock(dt));
             blocks.Enqueue(new InterferenceBlock(SystemSettings.Interference));
             Object = new ComplexBlock(blocks);
@@ -52,37 +54,43 @@ namespace BrilliantApplication.ControlSystems
 
         public double CalculateWaterLevel()
         {
-            var inputValue = InputStream - SystemSettings.OutputStream;
+            var inputValue = InputStreamBlock.Calculate(InputStream) - SystemSettings.OutputStream;
             var result = Object.Calculate(inputValue);
 
             WaterLevel = result;
 
-            if (WaterLevel <= 0 && inputValue < 0)
+            if (WaterLevel <= 0)
             {
                 WaterLevel = 0;
 
-                foreach (var block in Object.Blocks)
+                if (inputValue < 0)
                 {
-                    var integralBlock = block as IntegralBlock;
-
-                    if (integralBlock != null)
+                    foreach (var block in Object.Blocks)
                     {
-                        integralBlock.StepBackAtLimitValue();
+                        var integralBlock = block as IntegralBlock;
+
+                        if (integralBlock != null)
+                        {
+                            integralBlock.StepBackAtLimitValue();
+                        }
                     }
                 }
             }
 
-            if (WaterLevel >= SystemSettings.WaterLevelLimit && inputValue > 0)
+            if (WaterLevel >= SystemSettings.WaterLevelLimit)
             {
                 WaterLevel = SystemSettings.WaterLevelLimit;
 
-                foreach (var block in Object.Blocks)
+                if (inputValue > 0)
                 {
-                    var integralBlock = block as IntegralBlock;
-
-                    if (integralBlock != null)
+                    foreach (var block in Object.Blocks)
                     {
-                        integralBlock.StepBackAtLimitValue();
+                        var integralBlock = block as IntegralBlock;
+
+                        if (integralBlock != null)
+                        {
+                            integralBlock.StepBackAtLimitValue();
+                        }
                     }
                 }
             }

@@ -18,7 +18,6 @@ namespace BrilliantApplication
     {
         private BarrelControlSystem m_controlSystem;
         private const double m_k_dt = 1;
-        private double m_inputStreamStep = 0.01;
         private int m_roundCof = 5;
         //private double m_valveStep = 0.1;
         
@@ -43,13 +42,13 @@ namespace BrilliantApplication
 
         private void reducePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream -= m_inputStreamStep;
+            m_controlSystem.InputStream -= SystemSettings.RecommendedStep;
             preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
         }
 
         private void increasePreasureButton_Click(object sender, EventArgs e)
         {
-            m_controlSystem.InputStream += m_inputStreamStep;
+            m_controlSystem.InputStream += SystemSettings.RecommendedStep;
             preasureLabel.Text = Math.Round(m_controlSystem.InputStream, m_roundCof).ToString();
         }
 
@@ -91,6 +90,16 @@ namespace BrilliantApplication
         private void x1Button_Click(object sender, EventArgs e)
         {
             timer1.Interval = 1000;
+        }
+
+        private void manualControlButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void automaticControlButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

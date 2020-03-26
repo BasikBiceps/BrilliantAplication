@@ -50,6 +50,13 @@
             this.x10Button = new System.Windows.Forms.Button();
             this.x1Button = new System.Windows.Forms.Button();
             this.objectPictureBox = new System.Windows.Forms.PictureBox();
+            this.manualControlButton = new System.Windows.Forms.Button();
+            this.automaticControlButton = new System.Windows.Forms.Button();
+            this.regulatorTaskTextBox = new System.Windows.Forms.TextBox();
+            this.regulatorTaskHelpLabel = new System.Windows.Forms.Label();
+            this.currentRegulatorHelpLabel = new System.Windows.Forms.Label();
+            this.currentRegulatorTaskLabel = new System.Windows.Forms.Label();
+            this.sendRegulatorTaskButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.waterLimitStateChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -229,11 +236,81 @@
             this.objectPictureBox.TabIndex = 0;
             this.objectPictureBox.TabStop = false;
             // 
+            // manualControlButton
+            // 
+            this.manualControlButton.Location = new System.Drawing.Point(232, 44);
+            this.manualControlButton.Name = "manualControlButton";
+            this.manualControlButton.Size = new System.Drawing.Size(133, 22);
+            this.manualControlButton.TabIndex = 22;
+            this.manualControlButton.Text = "Manual control";
+            this.manualControlButton.UseVisualStyleBackColor = true;
+            this.manualControlButton.Click += new System.EventHandler(this.manualControlButton_Click);
+            // 
+            // automaticControlButton
+            // 
+            this.automaticControlButton.Location = new System.Drawing.Point(232, 86);
+            this.automaticControlButton.Name = "automaticControlButton";
+            this.automaticControlButton.Size = new System.Drawing.Size(133, 23);
+            this.automaticControlButton.TabIndex = 23;
+            this.automaticControlButton.Text = "Automatic control";
+            this.automaticControlButton.UseVisualStyleBackColor = true;
+            this.automaticControlButton.Click += new System.EventHandler(this.automaticControlButton_Click);
+            // 
+            // regulatorTaskTextBox
+            // 
+            this.regulatorTaskTextBox.Location = new System.Drawing.Point(430, 48);
+            this.regulatorTaskTextBox.Name = "regulatorTaskTextBox";
+            this.regulatorTaskTextBox.Size = new System.Drawing.Size(100, 20);
+            this.regulatorTaskTextBox.TabIndex = 24;
+            // 
+            // regulatorTaskHelpLabel
+            // 
+            this.regulatorTaskHelpLabel.AutoSize = true;
+            this.regulatorTaskHelpLabel.Location = new System.Drawing.Point(430, 28);
+            this.regulatorTaskHelpLabel.Name = "regulatorTaskHelpLabel";
+            this.regulatorTaskHelpLabel.Size = new System.Drawing.Size(79, 13);
+            this.regulatorTaskHelpLabel.TabIndex = 25;
+            this.regulatorTaskHelpLabel.Text = "Regulator task:";
+            // 
+            // currentRegulatorHelpLabel
+            // 
+            this.currentRegulatorHelpLabel.AutoSize = true;
+            this.currentRegulatorHelpLabel.Location = new System.Drawing.Point(430, 86);
+            this.currentRegulatorHelpLabel.Name = "currentRegulatorHelpLabel";
+            this.currentRegulatorHelpLabel.Size = new System.Drawing.Size(111, 13);
+            this.currentRegulatorHelpLabel.TabIndex = 26;
+            this.currentRegulatorHelpLabel.Text = "Current regulator task:";
+            // 
+            // currentRegulatorTaskLabel
+            // 
+            this.currentRegulatorTaskLabel.AutoSize = true;
+            this.currentRegulatorTaskLabel.Location = new System.Drawing.Point(547, 86);
+            this.currentRegulatorTaskLabel.Name = "currentRegulatorTaskLabel";
+            this.currentRegulatorTaskLabel.Size = new System.Drawing.Size(13, 13);
+            this.currentRegulatorTaskLabel.TabIndex = 27;
+            this.currentRegulatorTaskLabel.Text = "0";
+            // 
+            // sendRegulatorTaskButton
+            // 
+            this.sendRegulatorTaskButton.Location = new System.Drawing.Point(550, 46);
+            this.sendRegulatorTaskButton.Name = "sendRegulatorTaskButton";
+            this.sendRegulatorTaskButton.Size = new System.Drawing.Size(75, 23);
+            this.sendRegulatorTaskButton.TabIndex = 28;
+            this.sendRegulatorTaskButton.Text = "Send task";
+            this.sendRegulatorTaskButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 578);
+            this.Controls.Add(this.sendRegulatorTaskButton);
+            this.Controls.Add(this.currentRegulatorTaskLabel);
+            this.Controls.Add(this.currentRegulatorHelpLabel);
+            this.Controls.Add(this.regulatorTaskHelpLabel);
+            this.Controls.Add(this.regulatorTaskTextBox);
+            this.Controls.Add(this.automaticControlButton);
+            this.Controls.Add(this.manualControlButton);
             this.Controls.Add(this.x1Button);
             this.Controls.Add(this.x10Button);
             this.Controls.Add(this.refreshButton);
@@ -280,6 +357,13 @@
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button x10Button;
         private System.Windows.Forms.Button x1Button;
+        private System.Windows.Forms.Button manualControlButton;
+        private System.Windows.Forms.Button automaticControlButton;
+        private System.Windows.Forms.TextBox regulatorTaskTextBox;
+        private System.Windows.Forms.Label regulatorTaskHelpLabel;
+        private System.Windows.Forms.Label currentRegulatorHelpLabel;
+        private System.Windows.Forms.Label currentRegulatorTaskLabel;
+        private System.Windows.Forms.Button sendRegulatorTaskButton;
     }
 }
 
