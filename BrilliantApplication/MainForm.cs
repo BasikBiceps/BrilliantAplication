@@ -88,11 +88,13 @@ namespace BrilliantApplication
         private void manualControlButton_Click(object sender, EventArgs e)
         {
             m_controlSystem.WorkMode = WorkMode.Manual;
+            workStateLabel.Text = "Manual";
         }
 
         private void automaticControlButton_Click(object sender, EventArgs e)
         {
             m_controlSystem.WorkMode = WorkMode.Automatic;
+            workStateLabel.Text = "Automatic";
         }
 
         private void sendRegulatorTaskButton_Click(object sender, EventArgs e)

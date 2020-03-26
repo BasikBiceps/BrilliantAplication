@@ -11,7 +11,6 @@ namespace BrilliantApplication.Regulators
     public class Regulator
     {
         public double m_regulatorTask = 0;
-        public double m_prevWaterLevel = 0;
 
         public double RegulatorTask
         {

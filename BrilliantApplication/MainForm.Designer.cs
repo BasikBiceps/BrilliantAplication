@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.waterLimitStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.waterLevelLabel = new System.Windows.Forms.Label();
@@ -53,6 +53,7 @@
             this.currentRegulatorHelpLabel = new System.Windows.Forms.Label();
             this.currentRegulatorTaskLabel = new System.Windows.Forms.Label();
             this.sendRegulatorTaskButton = new System.Windows.Forms.Button();
+            this.workStateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.waterLimitStateChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -64,17 +65,17 @@
             // 
             // waterLimitStateChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.waterLimitStateChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.waterLimitStateChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.waterLimitStateChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.waterLimitStateChart.Legends.Add(legend1);
             this.waterLimitStateChart.Location = new System.Drawing.Point(508, 115);
             this.waterLimitStateChart.Name = "waterLimitStateChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Water level";
-            this.waterLimitStateChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Water level";
+            this.waterLimitStateChart.Series.Add(series1);
             this.waterLimitStateChart.Size = new System.Drawing.Size(475, 268);
             this.waterLimitStateChart.TabIndex = 1;
             this.waterLimitStateChart.Text = "chart1";
@@ -259,11 +260,21 @@
             this.sendRegulatorTaskButton.UseVisualStyleBackColor = true;
             this.sendRegulatorTaskButton.Click += new System.EventHandler(this.sendRegulatorTaskButton_Click);
             // 
+            // workStateLabel
+            // 
+            this.workStateLabel.AutoSize = true;
+            this.workStateLabel.Location = new System.Drawing.Point(264, 18);
+            this.workStateLabel.Name = "workStateLabel";
+            this.workStateLabel.Size = new System.Drawing.Size(42, 13);
+            this.workStateLabel.TabIndex = 29;
+            this.workStateLabel.Text = "Manual";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 578);
+            this.Controls.Add(this.workStateLabel);
             this.Controls.Add(this.sendRegulatorTaskButton);
             this.Controls.Add(this.currentRegulatorTaskLabel);
             this.Controls.Add(this.currentRegulatorHelpLabel);
@@ -316,6 +327,7 @@
         private System.Windows.Forms.Label currentRegulatorHelpLabel;
         private System.Windows.Forms.Label currentRegulatorTaskLabel;
         private System.Windows.Forms.Button sendRegulatorTaskButton;
+        private System.Windows.Forms.Label workStateLabel;
     }
 }
 
