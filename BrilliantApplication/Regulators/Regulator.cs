@@ -15,11 +15,10 @@ namespace BrilliantApplication.Regulators
         private IntegralBlock m_integralBlock;
         private DifferentialBlock m_diffBlock;
         private double m_regulatorTask = 0;
-        private double m_Ki = 0;
 
-        public double Ki { get { return m_Ki; } set { m_Ki = value; } }
+        public double Ki { get; set; }
         public double K { get { return m_gainBlock.Gain; } set { m_gainBlock.Gain = value; } }
-        public double Ti { get { return 1 / m_Ki; } set { m_Ki = 1 / value; } }
+        public double Ti { get { return 1 / Ki; } set { Ki = 1 / value; } }
         public double Kd { get; set; }
 
         public Regulator(double dt, double K = 0, double Ki = 0, double Kd = 0)

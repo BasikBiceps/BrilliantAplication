@@ -66,7 +66,7 @@ namespace BrilliantApplication.ControlSystems
             {
                 var e = Regulator.RegulatorTask - WaterLevel;
 
-                InputStream += Regulator.Regulate(e);
+                InputStream = Regulator.Regulate(e);
             }
 
             var inputValue = InputStreamBlock.Calculate(InputStream) - SystemSettings.OutputStream;
