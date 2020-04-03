@@ -57,14 +57,16 @@ namespace BrilliantApplication.ControlSystems
             blocks.Enqueue(new InterferenceBlock(SystemSettings.Interference));
             Object = new ComplexBlock(blocks);
 
-            Regulator = new Regulator();
+            Regulator = new Regulator(dt);
         }
 
         public double CalculateWaterLevel()
         {
             if (WorkMode == WorkMode.Automatic)
             {
-                InputStream = Regulator.Regulate(WaterLevel);
+                var e = Regulator.RegulatorTask - WaterLevel;
+
+                InputStream += Regulator.Regulate(e);
             }
 
             var inputValue = InputStreamBlock.Calculate(InputStream) - SystemSettings.OutputStream;

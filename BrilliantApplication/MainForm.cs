@@ -102,5 +102,17 @@ namespace BrilliantApplication
             m_controlSystem.Regulator.RegulatorTask = Convert.ToDouble(regulatorTaskTextBox.Text);
             currentRegulatorTaskLabel.Text = m_controlSystem.Regulator.RegulatorTask.ToString();
         }
+
+        private void sendSettingsButton_Click(object sender, EventArgs e)
+        {
+            m_controlSystem.Regulator.K = Convert.ToDouble(kTextBox.Text);
+            m_controlSystem.Regulator.Ki = Convert.ToDouble(kiTextBox.Text);
+            m_controlSystem.Regulator.Kd = Convert.ToDouble(kdTextBox.Text);
+
+            kLabel.Text = m_controlSystem.Regulator.K.ToString();
+            kiLabel.Text = m_controlSystem.Regulator.Ki.ToString();
+            kdLabel.Text = m_controlSystem.Regulator.Kd.ToString();
+        }
+
     }
 }

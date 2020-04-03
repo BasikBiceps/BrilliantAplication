@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.waterLimitStateChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.waterLevelLabel = new System.Windows.Forms.Label();
@@ -54,6 +54,17 @@
             this.currentRegulatorTaskLabel = new System.Windows.Forms.Label();
             this.sendRegulatorTaskButton = new System.Windows.Forms.Button();
             this.workStateLabel = new System.Windows.Forms.Label();
+            this.kHelpLabel = new System.Windows.Forms.Label();
+            this.kiHelpLabel = new System.Windows.Forms.Label();
+            this.kdHelpLabel = new System.Windows.Forms.Label();
+            this.kTextBox = new System.Windows.Forms.TextBox();
+            this.kiTextBox = new System.Windows.Forms.TextBox();
+            this.kdTextBox = new System.Windows.Forms.TextBox();
+            this.sendSettingsButton = new System.Windows.Forms.Button();
+            this.currentRegulatorSettingsHelpLabel = new System.Windows.Forms.Label();
+            this.kLabel = new System.Windows.Forms.Label();
+            this.kiLabel = new System.Windows.Forms.Label();
+            this.kdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.waterLimitStateChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -65,17 +76,17 @@
             // 
             // waterLimitStateChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.waterLimitStateChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.waterLimitStateChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.waterLimitStateChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.waterLimitStateChart.Legends.Add(legend2);
             this.waterLimitStateChart.Location = new System.Drawing.Point(508, 115);
             this.waterLimitStateChart.Name = "waterLimitStateChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Water level";
-            this.waterLimitStateChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Water level";
+            this.waterLimitStateChart.Series.Add(series2);
             this.waterLimitStateChart.Size = new System.Drawing.Size(475, 268);
             this.waterLimitStateChart.TabIndex = 1;
             this.waterLimitStateChart.Text = "chart1";
@@ -269,11 +280,119 @@
             this.workStateLabel.TabIndex = 29;
             this.workStateLabel.Text = "Manual";
             // 
+            // kHelpLabel
+            // 
+            this.kHelpLabel.AutoSize = true;
+            this.kHelpLabel.Location = new System.Drawing.Point(693, 29);
+            this.kHelpLabel.Name = "kHelpLabel";
+            this.kHelpLabel.Size = new System.Drawing.Size(17, 13);
+            this.kHelpLabel.TabIndex = 30;
+            this.kHelpLabel.Text = "K:";
+            // 
+            // kiHelpLabel
+            // 
+            this.kiHelpLabel.AutoSize = true;
+            this.kiHelpLabel.Location = new System.Drawing.Point(691, 51);
+            this.kiHelpLabel.Name = "kiHelpLabel";
+            this.kiHelpLabel.Size = new System.Drawing.Size(19, 13);
+            this.kiHelpLabel.TabIndex = 31;
+            this.kiHelpLabel.Text = "Ki:";
+            // 
+            // kdHelpLabel
+            // 
+            this.kdHelpLabel.AutoSize = true;
+            this.kdHelpLabel.Location = new System.Drawing.Point(687, 72);
+            this.kdHelpLabel.Name = "kdHelpLabel";
+            this.kdHelpLabel.Size = new System.Drawing.Size(23, 13);
+            this.kdHelpLabel.TabIndex = 32;
+            this.kdHelpLabel.Text = "Kd:";
+            // 
+            // kTextBox
+            // 
+            this.kTextBox.Location = new System.Drawing.Point(716, 26);
+            this.kTextBox.Name = "kTextBox";
+            this.kTextBox.Size = new System.Drawing.Size(58, 20);
+            this.kTextBox.TabIndex = 33;
+            this.kTextBox.Text = "0";
+            // 
+            // kiTextBox
+            // 
+            this.kiTextBox.Location = new System.Drawing.Point(716, 48);
+            this.kiTextBox.Name = "kiTextBox";
+            this.kiTextBox.Size = new System.Drawing.Size(58, 20);
+            this.kiTextBox.TabIndex = 34;
+            this.kiTextBox.Text = "0";
+            // 
+            // kdTextBox
+            // 
+            this.kdTextBox.Location = new System.Drawing.Point(716, 69);
+            this.kdTextBox.Name = "kdTextBox";
+            this.kdTextBox.Size = new System.Drawing.Size(58, 20);
+            this.kdTextBox.TabIndex = 35;
+            this.kdTextBox.Text = "0";
+            // 
+            // sendSettingsButton
+            // 
+            this.sendSettingsButton.Location = new System.Drawing.Point(690, 91);
+            this.sendSettingsButton.Name = "sendSettingsButton";
+            this.sendSettingsButton.Size = new System.Drawing.Size(84, 23);
+            this.sendSettingsButton.TabIndex = 36;
+            this.sendSettingsButton.Text = "Send settings";
+            this.sendSettingsButton.UseVisualStyleBackColor = true;
+            this.sendSettingsButton.Click += new System.EventHandler(this.sendSettingsButton_Click);
+            // 
+            // currentRegulatorSettingsHelpLabel
+            // 
+            this.currentRegulatorSettingsHelpLabel.AutoSize = true;
+            this.currentRegulatorSettingsHelpLabel.Location = new System.Drawing.Point(781, 9);
+            this.currentRegulatorSettingsHelpLabel.Name = "currentRegulatorSettingsHelpLabel";
+            this.currentRegulatorSettingsHelpLabel.Size = new System.Drawing.Size(127, 13);
+            this.currentRegulatorSettingsHelpLabel.TabIndex = 37;
+            this.currentRegulatorSettingsHelpLabel.Text = "Current regulator settings:";
+            // 
+            // kLabel
+            // 
+            this.kLabel.AutoSize = true;
+            this.kLabel.Location = new System.Drawing.Point(780, 29);
+            this.kLabel.Name = "kLabel";
+            this.kLabel.Size = new System.Drawing.Size(13, 13);
+            this.kLabel.TabIndex = 38;
+            this.kLabel.Text = "0";
+            // 
+            // kiLabel
+            // 
+            this.kiLabel.AutoSize = true;
+            this.kiLabel.Location = new System.Drawing.Point(780, 51);
+            this.kiLabel.Name = "kiLabel";
+            this.kiLabel.Size = new System.Drawing.Size(13, 13);
+            this.kiLabel.TabIndex = 39;
+            this.kiLabel.Text = "0";
+            // 
+            // kdLabel
+            // 
+            this.kdLabel.AutoSize = true;
+            this.kdLabel.Location = new System.Drawing.Point(780, 72);
+            this.kdLabel.Name = "kdLabel";
+            this.kdLabel.Size = new System.Drawing.Size(13, 13);
+            this.kdLabel.TabIndex = 40;
+            this.kdLabel.Text = "0";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 578);
+            this.Controls.Add(this.kdLabel);
+            this.Controls.Add(this.kiLabel);
+            this.Controls.Add(this.kLabel);
+            this.Controls.Add(this.currentRegulatorSettingsHelpLabel);
+            this.Controls.Add(this.sendSettingsButton);
+            this.Controls.Add(this.kdTextBox);
+            this.Controls.Add(this.kiTextBox);
+            this.Controls.Add(this.kTextBox);
+            this.Controls.Add(this.kdHelpLabel);
+            this.Controls.Add(this.kiHelpLabel);
+            this.Controls.Add(this.kHelpLabel);
             this.Controls.Add(this.workStateLabel);
             this.Controls.Add(this.sendRegulatorTaskButton);
             this.Controls.Add(this.currentRegulatorTaskLabel);
@@ -328,6 +447,17 @@
         private System.Windows.Forms.Label currentRegulatorTaskLabel;
         private System.Windows.Forms.Button sendRegulatorTaskButton;
         private System.Windows.Forms.Label workStateLabel;
+        private System.Windows.Forms.Label kHelpLabel;
+        private System.Windows.Forms.Label kiHelpLabel;
+        private System.Windows.Forms.Label kdHelpLabel;
+        private System.Windows.Forms.TextBox kTextBox;
+        private System.Windows.Forms.TextBox kiTextBox;
+        private System.Windows.Forms.TextBox kdTextBox;
+        private System.Windows.Forms.Button sendSettingsButton;
+        private System.Windows.Forms.Label currentRegulatorSettingsHelpLabel;
+        private System.Windows.Forms.Label kLabel;
+        private System.Windows.Forms.Label kiLabel;
+        private System.Windows.Forms.Label kdLabel;
     }
 }
 
