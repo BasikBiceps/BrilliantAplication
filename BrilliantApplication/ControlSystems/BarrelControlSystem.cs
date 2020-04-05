@@ -42,7 +42,7 @@ namespace BrilliantApplication.ControlSystems
         public double WaterLevel { get; set; }
         public GainBlock InputStreamBlock { get; set; }
         public WorkMode WorkMode { get; set; } = WorkMode.Manual;
-        public Regulator Regulator { get; set; }
+        public PIDRegulator Regulator { get; set; }
 
         public BarrelControlSystem(double dt) : base() 
         {
@@ -57,7 +57,7 @@ namespace BrilliantApplication.ControlSystems
             blocks.Enqueue(new InterferenceBlock(SystemSettings.Interference));
             Object = new ComplexBlock(blocks);
 
-            Regulator = new Regulator(dt);
+            Regulator = new PIDRegulator(dt);
         }
 
         public double CalculateWaterLevel()
