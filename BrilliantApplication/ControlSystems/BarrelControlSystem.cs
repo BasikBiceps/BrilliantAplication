@@ -20,6 +20,7 @@ namespace BrilliantApplication.ControlSystems
     {
         private double m_inputStream = 0;
         public double m_regulatorTask = 0;
+        private AperiodicBlock m_withoutHitBlock;
         public double InputStream
         {
             get { return m_inputStream; }
@@ -50,6 +51,7 @@ namespace BrilliantApplication.ControlSystems
             InputStream = 0;
 
             InputStreamBlock = new GainBlock(SystemSettings.Gain);
+            m_withoutHitBlock = new AperiodicBlock(dt, SystemSettings.TForValve);
 
             var blocks = new Queue<IBlock>();
             blocks.Enqueue(new DelayBlock(dt, SystemSettings.Delay));
@@ -62,11 +64,15 @@ namespace BrilliantApplication.ControlSystems
 
         public double CalculateWaterLevel()
         {
+            var e = m_withoutHitBlock.Calculate(Regulator.RegulatorTask) - WaterLevel;
+
             if (WorkMode == WorkMode.Automatic)
             {
-                var e = Regulator.RegulatorTask - WaterLevel;
-
                 InputStream = Regulator.Regulate(e);
+            }
+            else
+            {
+                Regulator.RecalculationForShocklessMode(InputStream, e);
             }
 
             var inputValue = InputStreamBlock.Calculate(InputStream) - SystemSettings.OutputStream;
